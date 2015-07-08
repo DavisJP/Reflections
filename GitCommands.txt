@@ -1,0 +1,144 @@
+git checkout <muda branch>
+
+//List state
+git stash
+git stash list
+
+//Send from stash to branch
+git stash branch <name>
+
+git stash apply
+
+git status
+git log
+
+//Editable comments
+git commit -s
+
+//Updates last commmit with files in staging area
+git commit --amend
+
+//Create new branch
+git branch
+
+//List of files in a commit
+git diff-tree --no-commit-id --name-only -r 45f33d3599a5bb3efde4c11445957dcf585c05ac
+
+git rebase master
+
+git add .
+//It looks at the working tree and adds all those paths to the staged changes if they are either changed or are new and not //ignored, it does not stage any 'rm' actions.
+
+//looks at all the currently tracked files and stages the changes to those files if they are different or if they have been //removed. It does not add any new files, it only stages changes to already tracked files.
+git add -u
+
+//is a handy shortcut for doing both.
+git add -A
+
+//Reverse file to original state, taking off staging area
+git erase HEAD^ <file>
+
+//return changes to staging area
+git reset HEAD --soft
+git reset --soft HEAD~1
+
+//Everything is up-to-FUCKING-date!
+git reset HEAD --hard
+
+//Revert last commit or hash version
+git revert HEAD
+git revert <hash>
+
+//para dar esse comando vc já deverá estar no branch de destino, ou seja, se eu quero que um commit do branch A vá para o //branch B eu primeiro dou checkout para o branch B e depois o cherry-pick
+git cherry-pick <ID do commit>
+
+gitk --all &
+
+---
+//Novo branch
+repo start <nome> .
+//136.166.94.193:29414/device/lge/g2
+//136.166.94.193:29414/platform/vendor/lge/cupss
+//136.166.94.193:29414/platform/vendor/lge/g2
+
+---
+repo abandon <nome_branch> --all
+repo abandon <nome_branch> .
+repo forall -c 'git clean -df; git reset HEAD --hard' (limpa não apaga a out)
+repo forall -c 'git clean -df; git reset HEAD --hard'; rm -rf out* (limpa e apaga a out) -> Compilação do zero
+ou 
+repo forall -c 'git clean -df && git reset --hard'
+
+repo sync -c -f -j5
+
+ou vc pode apagar todos os branches (até o master) e criar um novo:
+repo forall -c 'git checkout -b master'
+
+ou vc pode garantir que todos os projetos estejam na MASTER:
+repo forall -ec 'git checkout master'
+
+para então dar o sync
+
+repo branches
+
+repo checkout 
+
+repo forall -ec 'git checkout nome_do_branch'
+---
+#Upload codigo
+mkdir -p ~/repos/g2kk_upload
+cd ~/repos/g2kk_upload
+repo init -u ssh://$USER@10.193.225.32:29447/platform/manifest.git -b msm8974_kk_release
+ou
+repolapbr -b msm8974_kk_release
+repo upload ssh://136.166.94.193:29414/platform/vendor/lge/cupss HEAD:refs/for/msm8974_kk_g2_sca_test_141008
+
+---
+Apks:
+/home/lsitec67.anagusko/repos/g2kk/android/vendor/lge/apps
+/home/lsitec67.anagusko/repos/g2kk/android/vendor/lge/apps/prebuilts
+/home/lsitec67.anagusko/repos/g2kk/android/packages
+/home/lsitec206.miyashiro/Servidor2/repos/g2kk/android/vendor/lge/g2/g2_sca_com/products/operator
+
+---
+Primeiro fazer git add.... git commit...
+Para subir: 
+
+git push ssh://136.166.94.193:29414/device/lge/g2 HEAD:refs/for/msm8974_kk_g2_sca_test_141008
+git push ssh://136.166.94.193:29414/LG_apps/android/vendor/lge/apps/Settings4_0_KP HEAD:refs/for/msm8974_kk_g2_sca_test_141008
+git push ssh://136.166.94.193:29414/LG_apps/android/vendor/lge/apps/prebuilts/CB HEAD:refs/for/msm8974_kk_g2_sca_test_141008 #fechado
+git push ssh://136.166.94.193:29414/platform/vendor/lge/cupss HEAD:refs/for/msm8974_kk_g2_sca_test_141008
+git push ssh://136.166.94.193:29414/platform/vendor/lge/g2 HEAD:refs/for/msm8974_kk_g2_sca_test_141008
+
+c) 000, 08, 110, 999, 118 and 119 when a SIM/USIM is not present. These numbers shall be stored on the ME.
+
+Blacklist
+/home/lsitec67.anagusko/repos/g2kk/android/device/lge/g2/g2_sca_com/3rd_party_apps.cfg
+
+Superset
+/home/lsitec67.anagusko/repos/g2kk/android/vendor/lge/g2/g2_sca_com/products/operator.mk
+/home/lsitec67.anagusko/repos/g2kk/android/vendor/lge/g2/g2_sca_com/products/operator/<APKs>/Android.mk
+
+Cupss
+repos/g2kk/android/vendor/lge/cupss/g2/g2_sca_com/CLR_BR/_common/filesystem/config/custom_apk_list.cfg
+repos/g2kk/android/vendor/lge/cupss/g2/g2_sca_com/CLR_BR/_common/filesystem/config/app-enabled-conf.json
+
+apns.xml - Profiles (Agora está na pasta _common acima - fora de OPERADORA_PAIS)
+featureset.xml - Algumas configurações de mensagens e simcard
+plmns.xml - Plmns
+telephony.xml - Configurações de Voice Mail, ECC, Matching, Send My Number, Roaming Icon
+appmanager.cfg - Instalação ou remoção de um apk. (Removed apps)
+custom_apk_list.cfg - Instalação ou remoção de um apk.
+app-enabled-conf.json - Instalação ou remoção de um apk (por mcc/mnc).
+ime_settings.xml - Configurações de língua default e de teclado.
+settings.xml - Algumas configurações que são usadas para gerar dbcrc
+
+---
+Sim novos
+\\136.166.94.140\Arquivos_LgeEx2\SIM_Explorer\Somente
+
+Meu SIM
+7AF75985EAD61C33
+
+---
+WCDMA-Only > DM FOTA Test > DM Client Test > Settings flex >  Service type: Full > FOTA
