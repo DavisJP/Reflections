@@ -65,9 +65,11 @@ git add <file>
 # View current remote branches (verbose)
 git remote -v
 
-git remote add origin //github.com/DavisJP/asteroids.git
+# Add remote branch
+git remote add <origin_name> https://github.com/DavisJP/Reflections.git
 
-git push <remote> <branch>
+# Push to remote repository
+git push <origin_name> <branch>
 git push origin master
 
 -------------------------------------------------------------------------
