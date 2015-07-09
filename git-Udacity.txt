@@ -1,0 +1,137 @@
+GIT - UDACITY COURSE
+
+# Better visualization of the log
+git log --graph --oneline master coins
+
+# Diff between 2 commits
+git diff <file1 or id> <file2 or id>
+# Diff between working directory and staging area
+git diff
+# Diff between staging area and repository commit
+git diff --staged
+
+# Show diff about parent commit
+git show <commit_id>
+
+# Delete changes in staging area related to working directory
+git erase head
+
+git --version
+
+# Copy the entire repository (including history) to computer
+git clone <http://> 
+
+git config --global color.ui auto
+
+# Config git to edit with Sublime
+git config --global core.editor "subl -n -w"
+git config --global push.default upstream
+git config --global merg.conflictstyle diff3
+
+# temporarily reset all files in a repo to their state at the time of commit
+git checkout <hash>
+# reset to HEAD of repo
+git checkout master
+
+# update all remote-tracking branches
+git fetch 
+
+# merge the remote master branch into the current master branch, if any.
+git pull
+
+#Commits only apply to your local repository
+git commit
+
+git push
+
+# start a new repository
+git init
+
+# Add a new branch
+git branch <new branch name>
+git checkout -b <new_branch_name)
+
+# Merge branch2 into branch1 (one of them should be checked out)
+git merge branch1 branch2
+git mergetool
+git merge --abort
+
+# Delete branch label after merge
+git branch -d coins
+
+# add file to staging area
+git add <file>
+
+# View current remote branches (verbose)
+git remote -v
+
+git remote add origin //github.com/DavisJP/asteroids.git
+
+git push <remote> <branch>
+git push origin master
+
+-------------------------------------------------------------------------
+git checkout <muda branch>
+
+//List state
+git stash
+git stash list
+
+//Send from stash to branch
+git stash branch <name>
+
+git stash apply
+
+git status
+git log
+
+//Editable comments
+git commit -s
+
+//Updates last commmit with files in staging area
+git commit --amend
+
+//Create new branch
+git branch
+
+//List of files in a commit
+git diff-tree --no-commit-id --name-only -r 45f33d3599a5bb3efde4c11445957dcf585c05ac
+
+git rebase master
+
+git add .
+//It looks at the working tree and adds all those paths to the staged changes if they are either changed or are new and not //ignored, it does not stage any 'rm' actions.
+
+//looks at all the currently tracked files and stages the changes to those files if they are different or if they have been //removed. It does not add any new files, it only stages changes to already tracked files.
+git add -u
+
+//is a handy shortcut for doing both.
+git add -A
+
+//Reverse file to original state, taking off staging area
+git erase HEAD^ <file>
+
+//return changes to staging area
+git reset HEAD --soft
+git reset --soft HEAD~1
+
+//Everything is up-to-FUCKING-date!
+git reset HEAD --hard
+
+//Revert last commit or hash version
+git revert HEAD
+git revert <hash>
+
+//para dar esse comando vc já deverá estar no branch de destino, ou seja, se eu quero que um commit do branch A vá para o //branch B eu primeiro dou checkout para o branch B e depois o cherry-pick
+git cherry-pick <ID do commit>
+
+gitk --all &
+
+-------------------------------------------------------------------------
+Git Errors and Warnings Solution
+
+Should not be doing an octopus 
+Octopus is a strategy Git uses to combine many different versions of code together. This message can appear if you try to use this strategy in an inappropriate situation.
+
+You are in 'detached HEAD' state 
+HEAD is what Git calls the commit you are currently on. You can “detach” the HEAD by switching to a previous commit.

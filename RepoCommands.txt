@@ -1,0 +1,28 @@
+REPO COMMANDS
+
+//Novo branch
+repo start <nome> .
+
+repo abandon <nome_branch> --all
+repo abandon <nome_branch> .
+repo forall -c 'git clean -df; git reset HEAD --hard' (limpa não apaga a out)
+repo forall -c 'git clean -df; git reset HEAD --hard'; rm -rf out* (limpa e apaga a out) -> Compilação do zero
+ou 
+repo forall -c 'git clean -df && git reset --hard'
+
+repo sync -c -f -j5
+
+ou vc pode apagar todos os branches (até o master) e criar um novo:
+repo forall -c 'git checkout -b master'
+
+ou vc pode garantir que todos os projetos estejam na MASTER:
+repo forall -ec 'git checkout master'
+
+para então dar o sync
+
+repo branches
+
+repo checkout 
+
+repo forall -ec 'git checkout nome_do_branch'
+
